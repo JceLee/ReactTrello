@@ -1,13 +1,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {Lane} from "./Lane";
-import {Card} from "./Card"
+import { RootReducerType } from "../modules";
+import Lane from "./Lane";
+import Card from "./Card";
 
+export default function Board() {
+  const cardList = useSelector((state: RootReducerType) => state.cardList);
+  const category = ["Backlog", "Doing", "Done"];
 
-export const Board : React.FC = () => {
-    const cardList = useSelector((state: RootReducerType) => state.filter.isFilterOn);
-
-    return <div>
-    
-    </div>
+  return (
+    <section className="board">
+      {category.map((state, index) => (
+        <Lane title={state} key={index} />
+      ))}
+    </section>
+  );
 }

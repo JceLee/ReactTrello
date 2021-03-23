@@ -1,17 +1,9 @@
 import { combineReducers } from "redux";
-import cardReducer, { cardSaga } from "./Card";
+import cardReducer, { cardSaga } from "./card";
 
 import { all } from "redux-saga/effects";
-import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
 
-const persistConfig = {
-  key: "trelloCard",
-  storage: storage,
-  whitelist: ["cardList"],
-};
-
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   cardList: cardReducer,
 });
 
@@ -20,5 +12,3 @@ export function* rootSaga() {
 }
 
 export type RootReducerType = ReturnType<typeof rootReducer>;
-
-export default persistReducer(persistConfig, rootReducer);

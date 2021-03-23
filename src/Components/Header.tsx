@@ -1,5 +1,9 @@
-export const Header : React.FC = () => {
-    return <div>
-        Header
-    </div>
+import React from "react";
+
+export default function Header() {
+  return (
+    <header className="mainHeader">
+      <span className="logo">Trello</span>
+    </header>
+  );
 }
