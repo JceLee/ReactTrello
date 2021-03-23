@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import cardReducer, { cardSaga } from "./Card";
+import cardReducer, { cardSaga } from "./card";
 
 import { all } from "redux-saga/effects";
 

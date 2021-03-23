@@ -1,6 +1,5 @@
 import React from "react";
-export const Card : React.FC = () => {
-    return <div>
-        Card
-    </div>
+
+export default function Card() {
+  return <div>Card</div>;
 }

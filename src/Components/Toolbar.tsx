@@ -1,7 +1,5 @@
 import React from "react";
 
-export const Toolbar : React.FC = () => {
-    return <div>
-        Toolbar
-    </div>
+export default function Toolbar() {
+  return <div>Toolbar</div>;
 }

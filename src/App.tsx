@@ -1,12 +1,11 @@
 import React from "react";
-import {Header} from "./Components/Header";
-import {Board} from "./Components/Board";
+import "./assets/css/App.scss";
+import MainPage from "./pages/MainPage";
 
 export default function App() {
   return (
     <>
-      <Header />
-      <Board />
+      <MainPage />
     </>
   );
 }
