@@ -1,22 +1,21 @@
 import Card from "../modules/card/type";
 
-export const getCardList = () => {
+export const getDataBase = () => {
   const cardList = localStorage.getItem("cardList");
   return cardList ? JSON.parse(cardList) : [];
 };
 
-export const updateCardList = (cardList: Card[]) => {
+export const updateDataBase = (cardList: Card[]) => {
   localStorage.setItem("cardList", JSON.stringify(cardList));
 };
 
-export const addScrapCard = (card: Card) => {
-  const cardList = getCardList();
-  updateCardList([...cardList, card]);
+export const addCardToDB = (card: Card) => {
+  const cardList = getDataBase();
+  updateDataBase([...cardList, card]);
 };
 
-export const removeScrapCard = (id: number) => {
-  const cardList = getCardList();
+export const removeCardFromDB = (id: number) => {
+  const cardList = getDataBase();
   const newCardList = cardList.filter((card: Card) => card.id !== id);
-
-  updateCardList(newCardList);
+  updateDataBase(newCardList);
 };
