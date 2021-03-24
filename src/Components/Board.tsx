@@ -5,7 +5,6 @@ import Lane from "./Lane";
 import Card from "./Card";
 
 export default function Board() {
-  const cardList = useSelector((state: RootReducerType) => state.cardList);
   const category = ["Backlog", "Doing", "Done"];
 
   return (

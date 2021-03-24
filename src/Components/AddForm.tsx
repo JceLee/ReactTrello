@@ -1,18 +1,41 @@
-import React, { useState, MouseEventHandler } from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import Card from "../modules/card/type";
+import { addCard } from "../modules/card/actions";
+import { addCardToDB } from "../api/browserStorage";
 
-type AddBtnProps = {
+type AddFormProps = {
+  cardList: Card[];
   category: string;
   onClick: Function;
 };
 
-export default function AddForm(props: AddBtnProps) {
+export default function AddForm(props: AddFormProps) {
+  const { cardList, category, onClick } = props;
   const [content, setContent] = useState<string>("");
+
+  const dispatch = useDispatch();
+
+  const createCard = () => {
+    const maxId =
+      cardList.length !== 0
+        ? cardList.reduce((max, card) => (card.id > max ? card.id : max), cardList[0].id)
+        : 0;
+    return {
+      id: (maxId + 1) | 0,
+      content: content,
+      state: category,
+    };
+  };
 
   const onClickHandler = () => {
     if (content !== "") {
-      console.log(content);
+      const newCard = createCard();
+      console.log(newCard);
+      dispatch(addCard(newCard));
+      addCardToDB(newCard);
     }
-    props.onClick();
+    onClick();
   };
 
   const onChangeHandler = (e: React.FormEvent<HTMLTextAreaElement>) => {

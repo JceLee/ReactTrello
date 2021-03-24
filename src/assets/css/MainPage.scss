@@ -58,7 +58,7 @@
       display: block;
     }
 
-    .inputBox {
+    .card {
       background-color: #fff;
       border-radius: 3px;
       border: 0;
@@ -72,7 +72,77 @@
       resize: none;
       width: 85%;
       padding: 5px;
+      margin: 10px auto;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 400;
+      box-shadow: 2px 2px #dbdbdb;
+    }
+
+    .inputBox {
+      background-color: #fff;
+      box-shadow: 2px 2px #dbdbdb;
+      border-radius: 3px;
+      border: 0;
+      cursor: pointer;
+      display: block;
+      margin-bottom: 8px;
+      min-height: 20px;
+      position: relative;
+      overflow: hidden;
+      overflow-wrap: break-word;
+      resize: none;
+      width: 85%;
+      padding: 5px;
       margin: 0 auto;
+    }
+
+    .editTool {
+      margin: 0 auto;
+      .inputBox {
+        background-color: #fff;
+        box-shadow: 2px 2px #dbdbdb;
+        border-radius: 3px;
+        min-height: 20px;
+        position: relative;
+        overflow: hidden;
+        overflow-wrap: break-word;
+        width: 85%;
+        padding: 5px;
+
+        margin-bottom: 10px;
+      }
+
+      .footer {
+        margin: 10px 0 10px 15px;
+        width: 85%;
+        display: flex;
+
+        .updateBtn {
+          border: 0;
+          background-color: #d36e1c;
+          border-radius: 3px;
+          color: white;
+          position: relative;
+          padding: 6px 12px;
+        }
+        .deleteBtn {
+          border: 0;
+          background-color: #963eac;
+          border-radius: 3px;
+          color: white;
+          position: relative;
+          padding: 6px 12px;
+        }
+        .closeBtn {
+          border: 0;
+          background-color: #7fb3d1;
+          border-radius: 3px;
+          color: white;
+          position: relative;
+          padding: 6px 12px;
+        }
+      }
     }
 
     .submitBtn {
