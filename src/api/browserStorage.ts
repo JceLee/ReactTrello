@@ -14,6 +14,14 @@ export const addCardToDB = (card: Card) => {
   updateDataBase([...cardList, card]);
 };
 
+export const updateCardFromDB = (card: Card) => {
+  const cardList = getDataBase().map((e: Card) => {
+    if (e.id === card.id) return Object.assign({}, e, { state: card.state, content: card.content });
+    return e;
+  });
+  updateDataBase(cardList);
+};
+
 export const removeCardFromDB = (id: number) => {
   const cardList = getDataBase();
   const newCardList = cardList.filter((card: Card) => card.id !== id);

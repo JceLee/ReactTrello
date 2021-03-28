@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { fetchCards } from "../modules/card/actions";
 import Card from "../modules/card/type";
+import { updateCardFromDB } from "../api/browserStorage";
 
 type ModalProps = {
   card: Card;
@@ -7,16 +10,32 @@ type ModalProps = {
 };
 
 export default function EditTool(props: ModalProps) {
-  const [content, setContent] = useState<string>(props.card.content);
-  const onClickHandler = () => {};
+  const { id, content, state } = props.card;
+  const [newContent, setNewContent] = useState<string>(content);
+  const [newState, setNewState] = useState<string>(state);
+
+  const dispatch = useDispatch();
+
+  const onClickHandler = () => {
+    if (content !== newContent || state !== newState) {
+      updateCardFromDB({
+        id: id,
+        content: newContent,
+        state: newState,
+      });
+    }
+    dispatch(fetchCards());
+    props.onClick();
+  };
 
   const onChangeHandler = (e: React.FormEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
+    setNewContent(e.currentTarget.value);
   };
 
   return (
     <div className="editTool">
-      <textarea className="inputBox" defaultValue={content} onChange={onChangeHandler} />
+      <textarea className="inputBox" defaultValue={newContent} onChange={onChangeHandler} />
       <div className="footer">
         <button className="updateBtn" onClick={onClickHandler}>
           Update
